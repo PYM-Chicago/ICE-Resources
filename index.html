@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>index.knit</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Know Your Rights Against ICE</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<p><img src="pym-logo.png" style="width:25.0%;height:25.0%" /></p>
+<div id="chicago-know-your-rights-against-ice" class="section level1">
+<h1>Chicago: Know Your Rights Against ICE</h1>
+</div>
+<div id="section" class="section level1">
+<h1></h1>
+<div id="about" class="section level2">
+<h2>About</h2>
+<p>This page was developed by the Chicago chapter of the Palestinian
+Youth Movement and is a collection of links to resources on knowing your
+rights and preparedness against Immigration and Customs Enforcement
+(ICE) and Customs and Border Patrol (CBP) for those living in the
+Chicago area and beyond. While these links are helpful for anyone, we
+tried our best to aggregate links here that would especially help the
+Arab and Muslim community.</p>
+<p>We recognize that knowing your rights isn’t enough protection against
+the lawless thugs that have been terrorizing our city and abducting our
+loved ones and neighbors. However, knowing your rights is critical to
+ensure you do not fall into the traps they set for us and allow for
+legal recourse after the fact. It is also essential to make sure you and
+your family are prepared for the possibility of an abduction and have a
+plan in place for what to do should it happen to you.</p>
+<p>We commend those among our community who have stood up to protect
+each other from ICE terror and to fight back against them however they
+can. Please join your local rapid response groups, stay aware of your
+surroundings, and join the fight to protect our community. Talk to your
+neighbors, families, and friends, and get organized.</p>
+</div>
+<div id="contents" class="section level2">
+<h2>Contents</h2>
+<div id="legal-resources-and-family-preparedness"
+class="section level4">
+<h4><a href="#legal">Legal Resources and Family Preparedness</a></h4>
+</div>
+<div id="know-your-rights" class="section level4">
+<h4><a href="#kyr">Know Your Rights</a></h4>
+</div>
+<div id="community-ice-response" class="section level4">
+<h4><a href="#fight">Community ICE Response</a></h4>
+</div>
+<div id="organizations" class="section level4">
+<h4><a href="#orgs">Organizations</a></h4>
+</div>
+<div id="social-media-pages" class="section level4">
+<h4><a href="#soc">Social Media Pages</a></h4>
+</div>
+</div>
+</div>
+<div id="section-1" class="section level1">
+<h1></h1>
+</div>
+<div id="section-2" class="section level1">
+<h1></h1>
+<div id="resources" class="section level2">
+<h2>Resources</h2>
+</div>
+</div>
+<div id="section-3" class="section level1">
+<h1></h1>
+<div id="legal" class="section level3">
+<h3>Legal Resources and Family Preparedness</h3>
+<ul>
+<li>Get connected with legal services via <a
+href="https://amle.us/">American Muslim Legal Ecosystem</a>, a joint
+effort by Muslim Legal Fund of America and CAIR Chicago (MLFA also has a
+separate legal assistance form <a
+href="https://mlfa.org/application-for-legal-assistance/">here</a>)</li>
+<li>Immigrant Legal Resource Center’s <a
+href="https://www.ilrc.org/resources/step-step-family-preparedness-plan">Step-by-Step
+Family Preparedness Toolkit</a></li>
+</ul>
+</div>
+<div id="kyr" class="section level3">
+<h3>Know Your Rights</h3>
+<ul>
+<li>Illinois Coalition for Immigrant and Refugee Rights (ICIRR): <a
+href="https://www.icirr.org/_files/ugd/aec63a_a9b21961198a4d7db3df2d97b9054b01.pdf">Know
+Your Rights materials</a> and wallet-sized Know Your Rights guides in <a
+href="https://www.immigrantdefenseproject.org/wp-content/uploads/Home-Raid-community-Flyer_Arabic-March-2025.pdf">Arabic</a></li>
+<li>Immigrant Defense Project: <a
+href="https://www.immigrantdefenseproject.org/know-your-rights-with-ice/">Know
+Your Rights materials</a> for different situations (including <a
+href="https://www.icirr.org/_files/ugd/9781a6_136a489cd8e0489ead8f58f977f11e96.pdf">Arabic</a>
+materials)</li>
+<li>Immigrant Justice: The Restoration Project: <a
+href="https://kyr.as.me/schedule/2bca9769">Sign up for virtual Know Your
+Rights training</a></li>
+<li>Council on American-Islamic Relations: <a
+href="https://static1.squarespace.com/static/5aeb7bb8e2ccd14dfc3d03ff/t/67ab91813e14c117d8b9f95d/1739297156570/What-if-ICE-Shows-up-at-My-Masjid_.pdf">What
+to do if ICE Shows up at My Masjid?</a></li>
+<li>ARISE Chicago’s <a
+href="https://www.arisechicago.org/immigrantrights">Immigrant Worker
+Know Your Rights Toolkit</a></li>
+</ul>
+</div>
+<div id="fight" class="section level3">
+<h3>Community ICE Respose</h3>
+<ul>
+<li><p>If you believe you are witnessing ICE activity, please call
+ICIRR’s 24-Hour Family Support Hotline at 1-855-HELP-MY-FAMILY
+(1-855-435-7693) Live operators are available:</p>
+<p>6 AM - 9 PM every day in English and Spanish</p>
+<p>9 AM - 5 PM Monday-Friday in Arabic, Chinese, Dari, Korean, Pashto,
+Polish, Russian and Ukrainian.</p>
+<p>If you call outside of those times, you can expect a call back within
+48 hours.</p></li>
+<li><p>Join the <a
+href="https://icirr.quorum.us/campaign/ileyesonice/">IL Eyes on ICE
+state-wide text network</a> to receive alerts about ICE activity near
+you, important updates, and ways to organize and get involved</p></li>
+<li><p>Download the <a
+href="https://apps.apple.com/us/app/red-dot-ice-activity-alerts/id6749466141">Red
+Dot ICE tracking app</a> to see where ICE activity has been reported
+nationwide</p></li>
+<li><p>Immigrant Defense Project resources about <a
+href="https://www.immigrantdefenseproject.org/raids/">ICE raid
+tactics</a> and check out their <a
+href="https://www.immigrantdefenseproject.org/raids-toolkit/">ICE raids
+toolkit</a></p></li>
+<li><p><a
+href="https://docs.google.com/forms/d/e/1FAIpQLSdDbdNL-E6Dpp4i5jN6NH-lwxxOBW33CMX8JXezLQlD640mqw/viewform">Sign
+up</a> to join Pilsen Unidos por Nuestro Orgullo’s (PUÑO) Migra Watch
+team to learn how to identify federal agents, document ICE activity, and
+support immigrants in our communities</p></li>
+</ul>
+</div>
+<div id="orgs" class="section level3">
+<h3>Organizations</h3>
+<div id="illinois-coalition-for-immigrant-refugee-rights-icirr"
+class="section level4">
+<h4><a href="https://www.icirr.org/about">Illinois Coalition for
+Immigrant &amp; Refugee Rights (ICIRR)</a></h4>
+<ul>
+<li>ICIRR is dedicated to promoting the rights of immigrants and
+refugees to full and equal participation in the civic, cultural, social,
+and political life of our diverse society.</li>
+<li>Training and deployment of Rapid Response Teams to situations where
+ICE is spotted trying to detain people</li>
+<li>Family Support Hotline (FSN): 24 hotline for people to call when
+their family or friends are being detained (1-855-435-7693)</li>
+<li>Know your rights trainings and <a
+href="https://www.icirr.org/_files/ugd/aec63a_a9b21961198a4d7db3df2d97b9054b01.pdf">resources</a></li>
+<li><a
+href="https://www.icirr.org/_files/ugd/9781a6_136a489cd8e0489ead8f58f977f11e96.pdf">Arabic
+know-your-rights wallet size cards</a></li>
+</ul>
+</div>
+<div id="arab-american-action-network-aaan" class="section level4">
+<h4><a href="https://aaan.org/about/">Arab American Action Network
+(AAAN)</a></h4>
+<ul>
+<li>AAAN is a grassroots nonprofit, our strategies include community
+organizing, advocacy, education, providing social services, leadership
+development, cultural outreach and forging productive relationships with
+other communities.</li>
+<li>AAAN offers social services in Arabic and advocate for
+immigrants</li>
+<li>Volunteer with their ICIRR RR team</li>
+</ul>
+</div>
+<div id="immigrant-defense-project" class="section level4">
+<h4><a href="https://www.immigrantdefenseproject.org/about/">Immigrant
+Defense Project</a></h4>
+<ul>
+<li>IDP was founded over 20 years ago to combat an emerging human rights
+crisis: the targeting of immigrants for mass imprisonment and
+deportation.</li>
+<li>IDP offers legal advice and trainings</li>
+<li>Know-your-rights resources including materials in Arabic</li>
+<li>ICE raids tactics guide and toolkit</li>
+</ul>
+</div>
+</div>
+<div id="soc" class="section level3">
+<h3>Social Media Pages</h3>
+<p>Stay up-to-date by following and keeping up with these social media
+pages (Instagram/Linktree) that serve to provide updates about the
+situation on-the-ground and post reminders about your rights and family
+preparedness. And don’t forget to <a
+href="https://www.instagram.com/pymchicago/">follow PYM Chicago</a> and
+our national page <a
+href="https://www.instagram.com/palestinianyouthmovement/?hl=en">here</a>.</p>
+<p>Chicago Based Instagram Pages:</p>
+<ul>
+<li><a href="https://linktr.ee/bpncchicago">Brighton Park Neighborhood
+Council</a></li>
+<li><a href="https://www.instagram.com/icirr_il">ICIRR Illinois</a></li>
+<li><a href="https://www.instagram.com/pilsenpuno">PilsenPUNO (“Pilsen
+united for our pride”)</a></li>
+<li><a href="https://www.instagram.com/ocadchicago">OCADchicago
+(organized communities against deportation)</a></li>
+<li><a href="https://linktr.ee/DARRT_IL">DeKalb Area Rapid Response
+Team</a></li>
+<li><a href="https://www.instagram.com/pslchicago">PSL Chicago</a></li>
+<li><a href="https://www.instagram.com/chicagoliberationcenter">Chicago
+Liberation Center</a></li>
+<li><a href="https://www.instagram.com/maldefian">Mexican American Legal
+Defense and Educational Fund (MALDEF)</a></li>
+<li><a href="https://www.instagram.com/latinopolicyforum">Latino Policy
+Forum</a></li>
+<li><a href="Linktr.ee/antiwarchicago">Anti-War Committee
+Chicago</a></li>
+<li><a href="linktr.ee/aaanmarkaz">Arab American Action Network
+(AAAN)</a></li>
+<li><a href="Linktree:%20linktr.ee/caarprnow">Chicago Alliance Against
+Racial and Political Repression (CAARPR)</a></li>
+<li><a href="https://www.instagram.com/coalitionagainsttrump">Coalition
+Against Trump</a></li>
+<li><a href="https://www.instagram.com/afirechicago">AFIREChicago
+(Alliance of Filipinos for immigrant Rights and Empowerment)</a></li>
+<li><a href="https://www.instagram.com/cairchicago">CAIR
+Chicago</a></li>
+<li><a href="https://www.instagram.com/chicagolabor">Chicago Federation
+of Labor</a></li>
+<li><a href="https://www.instagram.com/indivisiblechicago">Indivisible
+Chicago</a></li>
+</ul>
+<p>National Instagram Pages:</p>
+<ul>
+<li><a href="https://www.instagram.com/immigrantjustice">National
+Immigrant Justice Center</a></li>
+<li><a href="https://www.instagram.com/detentionwatch">Detention Watch
+Network</a></li>
+</ul>
+</div>
+<div
+id="do-you-have-a-suggestion-for-resources-to-be-added-to-this-page-contact-us-anonymously-using-this-webform."
+class="section level3">
+<h3>Do you have a suggestion for resources to be added to this page?
+Contact us anonymously using <a href="">this webform</a>.</h3>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
